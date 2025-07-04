@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record model="ir.ui.view" id="requisition_list_view" >
+		<field name="name">requisition.list</field>
+		<field name="model">requisition</field>
+		<field name="arch" type="xml">
+			<list string="Requisiciones">
+				<field name="name" />
+				<field name="company_id" />
+				<field name="requisition_budgeting_id" />
+				<field name="range_type_id" />
+				<field name="total_requisition"/>
+				<field name="state" />
+				<field name="currency_id" invisible="1"/>
+				<field name="requisition_date" invisible="1"/>
+			</list>
+		</field>
+	</record>
+	<record model="ir.ui.view" id="requisition_form_view" >
+		<field name="name">requisition.form</field>
+		<field name="model">requisition</field>
+		<field name="arch" type="xml">
+			<form string="Requisiciones" duplicate='false'>
+				<header style="position: sticky;top: 0;z-index: 10">
+
+                    <button name="action_confirm" 
+                        string="Confirmar" 
+                        invisible="state not in ('draft','rejected')" 
+                        groups="requisition.group_requisition_biologists,requisition.group_requisition_manager"
+                        type="object" 
+                        class="oe_highlight"/>
+
+                    <button name="action_rejected" 
+                        string="Rechazar" 
+                        invisible="state != 'confirmed'" 
+                        groups="requisition.group_requisition_Approver,requisition.group_requisition_manager"
+                        type="object" 
+                        class="oe_highlight"/>
+
+                    <button name="action_approve" 
+                        string="Aprobar" 
+                        invisible="state != 'confirmed'" 
+                        groups="requisition.group_requisition_Approver,requisition.group_requisition_manager"
+                        type="object" 
+                        class="oe_highlight"/>
+
+                    <button name="action_cancel" 
+                        string="Anular" 
+                        invisible="state not in ('draft','rejected')" 
+                        groups="requisition.group_requisition_Approver,requisition.group_requisition_manager"
+                        type="object" 
+                        class="oe_highlight"/>
+
+                    <button name="action_generate_budgets" 
+                        string="Generar Presupuestos" 
+                        invisible="state != 'approved'"
+                        groups="purchase.group_purchase_user,requisition.group_requisition_manager"
+                        type="object" 
+                        class="oe_highlight" />
+
+                    <button name="action_give_back" 
+                        string="Devolver a Borrador" 
+                        invisible="1" 
+                        groups="requisition.group_requisition_Approver,requisition.group_requisition_manager"
+                        type="object" 
+                        class="oe_highlight"/>
+                    
+                    <button name="send_mail" 
+                        string="Enviar requisicion"
+                        invisible="state not in ('approved','budgeted')"
+                        groups="purchase.group_purchase_user,requisition.group_requisition_manager"
+                        type="object" 
+                        class="oe_highlight" />
+                        
+                    <button name="action_print" 
+                        string="Imprimir"
+                        invisible="state not in ('approved','budgeted')"
+                        type="object" 
+                        class="oe_highlight" />
+
+                    <field name="state" widget="statusbar"/>
+				</header>
+				<sheet>
+                    <div class="oe_button_box" name="button_box">
+						<button name="action_open_purchase" type="object" class="oe_stat_button" icon="fa-file-o" invisible="state != 'budgeted'">
+							<field name="purchase_order_count" widget="statinfo"/>
+							<field name="purchase_order_ids" invisible="1"/>
+						</button>
+					</div>
+
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" default_focus="1" placeholder="Nombre" readonly='1'/>
+                        </h1>
+                    </div>
+                    <group>
+						<group>		
+							<field name="requisition_budgeting_id" required="1" widget="selection" 
+							readonly="state != 'draft'" options="{'no_create': True, 'no_open': True}"/>
+							<field name="budget" readonly="1" force_save="1"/>
+                            <field name="range_type_id" invisible="1"/>
+							<field name="period_id" required="1"
+                            readonly="state != 'draft'" options="{'no_create': True, 'no_open': True}"/>
+							<field name="level" invisible="1"/>
+                            <field name="requisition_tmpl_id" 
+                            readonly="state != 'draft'"/>
+						</group>
+						<group>
+							<field name="company_id" readonly="1" 
+							options="{'no_create': True, 'no_open': True}"/>
+							<field name="requisition_date" string="Fecha de creación de requisición" readonly="1" 
+							options="{'no_create': True, 'no_open': True}"/>												
+							<field name="currency_id" invisible="1"/>
+							<field name="confirm_by" force_save='1' invisible="1"/>
+							<field name="date_confirm" force_save='1' invisible="1"/>
+							<field name="approver_by" force_save='1' invisible="1"/>
+							<field name="date_approve" force_save='1' invisible="1"/>
+                            <field name="is_quota" invisible="1"/>
+						</group>
+                    </group>
+					<notebook>
+						<page string="Productos" >
+							<field name="requisition_line_ids" force_save='1' 
+                            widget="product_label_section_and_note_field_o2m"
+                            options="{'no_quick_create': True, 'no_create': True, 'no_open': True, 
+                            'form_view_ref': 'requisition.action_requisition_line_view_form'}">
+                                <list string="Lineas de requisiciones" editable="bottom">
+                                    <field 
+                                        name="product_id" 
+                                        optional="show"
+                                        widget="product_label_section_and_note_field"
+                                        force_save='1' 
+                                        options="{'no_create': True, 'no_open': True}"  
+                                        readonly="(parent.state not in ('draft','rejected') and product_quota) or parent.state not in ('draft','rejected')"
+                                        />
+                                    <field 
+                                        name="name" force_save='1'  
+                                        readonly="parent.state not in ('draft','rejected')"
+                                        />
+                                    <field 
+                                        name="product_uom_id" 
+                                        options="{'no_create': True, 'no_open': True}" 
+                                        force_save='1'  
+                                        readonly="(parent.state not in ('draft','rejected') and product_quota) or parent.state not in ('draft','rejected')"
+                                        />
+                                    <field 
+                                        name="quantity" 
+                                        force_save='1'  
+                                        readonly="(parent.state not in ('draft','rejected') and product_quota) or parent.state not in ('draft','rejected')"
+                                        />
+                                    <field 
+                                        name="approved_quantity" 
+                                        force_save='1'
+                                        column_invisible="parent.state == 'draft'" 
+                                        readonly="(parent.state not in ('confirmed') and product_quota) or parent.state not in ('confirmed')"
+                                        />
+                                    <field 
+                                        name="unit_cost" 
+                                        force_save='1' 
+                                        readonly="(parent.state not in ('draft','rejected') and product_quota) or parent.state not in ('draft','rejected')"
+                                        />
+                                    <field 
+                                        name="company_id" 
+                                        column_invisible="1" 
+                                        force_save='1' 
+                                        readonly="parent.state not in ('draft','rejected')"
+                                        />
+                                    <field 
+                                        name="seller_id" 
+                                        column_invisible="parent.state not in ('approved','budgeted')" 
+                                        force_save='1'  
+                                        readonly="parent.state not in ('approved') or product_quota"
+                                        />
+                                    <field 
+                                        name="observation" force_save='1'  
+                                        readonly="parent.state not in ('approved') or product_quota"
+                                        />
+                                    <field 
+                                        name="observation_purchase" 
+                                        column_invisible="parent.state not in ('approved','budgeted')" 
+                                        force_save='1'  
+                                        readonly="parent.state not in ('approved') or product_quota"
+                                        />
+                                    <field 
+                                        name="select_quota" 
+                                        force_save='1' 
+                                        column_invisible="parent.is_quota == False" 
+                                        readonly="(parent.state not in ('draft','rejected') and product_quota) or parent.state not in ('draft','rejected')"
+                                        />
+                                    <field 
+                                        name="string_quota" 
+                                        force_save='1' 
+                                        column_invisible="parent.is_quota == False"
+                                        />
+                                    <field 
+                                        name="sub_total_quotas" 
+                                        force_save='1' 
+                                        column_invisible="parent.is_quota == False"
+                                        />
+                                    <field 
+                                        name="currency_id" 
+                                        force_save='1' 
+                                        column_invisible="1" 
+                                        />
+                                    <field 
+                                        name="sub_total" 
+                                        force_save='1'  
+                                        readonly='1' 
+                                        />
+                                    <field 
+                                        name="purchased_product"
+                                        column_invisible="parent.state not in ('approved')" 
+                                        force_save='1' 
+                                        readonly="parent.state not in ('approved') or product_quota"
+                                        />
+                                </list>
+                            </field>
+							<group class="oe_subtotal_footer oe_right" colspan="2" name="requisition_total">
+								<field name="total_requisition" options="{'currency_field': 'currency_id'}"/>
+								<field name="difference_value" options="{'currency_field': 'currency_id'}"/>	
+							</group>
+							<field name="notes" class="oe_inline" placeholder="Escribas sus observaciones generales..."/>
+						</page>
+					</notebook>
+                </sheet>
+
+			</form>
+		</field>
+	</record>
+	<record id="requisition_search_view" model="ir.ui.view">
+        <field name="name">requisition.search</field>
+        <field name="model">requisition</field>
+        <field name="arch" type="xml">
+            <search string="Presupuesto de Requisiciones">
+                <field name="name"/>
+                <field name="company_id"/>
+            </search>
+        </field>
+    </record>
+
+	<record id="action_requisition_all_view" model="ir.actions.act_window">
+        <field name="name">Requisiciones generadas</field>
+        <field name="path">requisition_all</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">requisition</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="requisition_search_view"/>
+    </record>
+    <record id="action_requisition_all_view_form" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="action_requisition_all_view"/>
+        <field name="sequence" eval="20"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="requisition_form_view"/>
+    </record>
+	<record id="action_requisition_all_view_list" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="action_requisition_all_view"/>
+        <field name="sequence" eval="10"/>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="requisition_list_view"/>
+    </record>
+
+	<record id="action_requisition_confirmed_view" model="ir.actions.act_window">
+        <field name="name">Requisiciones confirmadas</field>
+        <field name="path">requisition_confirmed</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">requisition</field>
+        <field name="context">{}</field>
+        <field name="domain">[('state', '=', 'confirmed')]</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="requisition_search_view"/>
+    </record>
+    <record id="action_requisition_confirmed_view_form" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="action_requisition_confirmed_view"/>
+        <field name="sequence" eval="20"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="requisition_form_view"/>
+    </record>
+	<record id="action_requisition_confirmed_view_list" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="action_requisition_confirmed_view"/>
+        <field name="sequence" eval="10"/>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="requisition_list_view"/>
+    </record>
+	
+	<record id="action_requisition_approved_view" model="ir.actions.act_window">
+        <field name="name">Requisiciones aprobadas</field>
+        <field name="path">requisition_approved</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">requisition</field>
+        <field name="context">{}</field>
+        <field name="domain">[('state', '=', 'approved')]</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="requisition_search_view"/>
+    </record>
+    <record id="action_requisition_approved_view_form" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="action_requisition_approved_view"/>
+        <field name="sequence" eval="20"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="requisition_form_view"/>
+    </record>
+	<record id="action_requisition_approved_view_list" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="action_requisition_approved_view"/>
+        <field name="sequence" eval="10"/>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="requisition_list_view"/>
+    </record>	
+</odoo>

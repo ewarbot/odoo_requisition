@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_requisition_template_list" model="ir.ui.view">
+        <field name="name">requisition.template.list</field>
+        <field name="model">requisition.template</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="requisition_budgeting_id"/>
+                <field name="company_id"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_requisition_template_search" model="ir.ui.view">
+        <field name="name">requisition.template.search</field>
+        <field name="model">requisition.template</field>
+        <field name="arch" type="xml">
+            <search string="Plantilla de requisiciones">
+                <field name="name"/>
+                <field name="requisition_budgeting_id"/>
+                <field name="company_id"/>
+            </search>
+        </field>
+    </record>
+    <record id="view_requisition_template_form" model="ir.ui.view">
+        <field name="name">requisition.template.form</field>
+        <field name="model">requisition.template</field>
+        <field name="arch" type="xml">
+            <form string="Plantilla de requisiciones">
+            <header></header>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            invisible="active == True"/>
+                    <div>
+                        <h1>
+                            <field name="name" placeholder="Plantilla de requisiciones"
+                            required="1" style="width: 100%"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="requisition_budgeting_id" required="1"
+                            options="{'no_quick_create': True, 'no_create': True, 'no_open': True}"/>
+                        </group>
+                        <group>
+                            <field name="company_id" readonly="1"
+                            options="{'no_quick_create': True, 'no_create': True, 'no_open': True}"/>
+                        </group>
+                    </group>
+                    <notebook >
+                        <page string="Productos" name="requisition_tmpl_line">
+                            <field name="requisition_tmpl_line_id" 
+                            options="{'no_quick_create': True, 'no_create': True, 'no_open': True}">
+                                <list string="Lineas de requisiciones" editable="bottom">
+                                    <field name="product_id" 
+                                    widget="product_label_section_and_note_field"
+                                    required="1"
+                                    force_save="1" options="{'no_create': True, 'no_open': True}"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_requisition_template_view" model="ir.actions.act_window">
+        <field name="name">Plantilla de requisiciones</field>
+        <field name="path">requisition_template</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">requisition.template</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_requisition_template_search"/>
+    </record>
+    <record id="action_requisition_template_view_form" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="action_requisition_template_view"/>
+        <field name="sequence" eval="20"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_requisition_template_form"/>
+    </record>
+    <record id="action_requisition_template_view_list" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="action_requisition_template_view"/>
+        <field name="sequence" eval="10"/>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="view_requisition_template_list"/>
+    </record>
+</odoo>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="requisition_budgeting_line_list" model="ir.ui.view">
+        <field name="name">requisition.budgeting.line.list</field>
+        <field name="model">requisition.budgeting.line</field>
+        <field name="arch" type="xml">
+            <list string="Lineas de presupuesto" editable="bottom" sample='1'>
+                <field name="company_id" column_invisible="True"/>
+                <field name="sequence" widget="handle"
+                       column_invisible="context.get('invisible_handle', False)"/>
+                <field name="product_id" string="Product"
+                       options="{'no_create': True, 'no_open': True}"
+                       readonly="category_id"
+                       placeholder="All Products"
+                       force_save="1"/>
+                <field name="category_id" string="Product Category"
+                       options="{'no_create': True, 'no_open': True}"
+                       readonly="product_id"
+                       placeholder="All Categories"
+                       force_save="1"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_requisition_budgeting_list" model="ir.ui.view">
+        <field name="name">requisition.budgeting.list</field>
+        <field name="model">requisition.budgeting</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="budget"/>
+                <field name="company_id"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_requisition_budgeting_search" model="ir.ui.view">
+        <field name="name">requisition.budgeting.search</field>
+        <field name="model">requisition.budgeting</field>
+        <field name="arch" type="xml">
+            <search string="Presupuesto de Requisiciones">
+                <field name="name"/>
+                <field name="company_id"/>
+            </search>
+        </field>
+    </record>
+    <record id="view_requisition_budgeting_form" model="ir.ui.view">
+        <field name="name">requisition.budgeting.form</field>
+        <field name="model">requisition.budgeting</field>
+        <field name="arch" type="xml">
+            <form string="Presupuesto de Requisiciones">
+            <header></header>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            invisible="active == True"/>
+                    <div>
+                        <h1>
+                            <field name="name" placeholder="Presupuesto de Requisiciones"
+                            required="1" style="width: 100%"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="budget" required="1"/>
+                            <field name="range_type_id" required="1"
+                            options="{'no_quick_create': True, 'no_create': True, 'no_open': True}"/>
+                            <field name="purchase_type_id" required="0"
+                            options="{'no_quick_create': True, 'no_create': True, 'no_open': True}"/>
+                            <field name="is_quota"/>
+                        </group>
+                        <group>
+                            <field name="level" required="1"/>
+                            <field name="company_id" readonly="1"
+                            options="{'no_quick_create': True, 'no_create': True, 'no_open': True}"/>
+                            <field name="sequence_id" readonly="1"
+                            options="{'no_quick_create': True, 'no_create': True, 'no_open': False}"/>
+                        </group>
+                    </group>
+                    <notebook >
+                        <page string="Lineas" name="lines">
+                            <field name="budget_line_ids" 
+                            options="{'no_quick_create': True, 'no_create': True, 'no_open': True}"
+                            context="{'list_view_ref': 'requisition.requisition_budgeting_line_list'}"/>
+                        </page>
+                        <page string="Coutas" name="quota" invisible="not is_quota">
+                            <group>
+                                <group>
+                                    <field name="amount_quota"/>
+                                </group>
+                                <group>
+                                    <field name="number_quota"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Correos" name="mails">
+                            <field name="requisition_mail_ids" 
+                                options="{'no_quick_create': True, 'no_create': True, 'no_open': True}">
+                                <list editable="bottom">
+                                    <field name="name" placeholder="Nombre"/>
+                                    <field name="user_ids" widget="many2many_tags"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_requisition_budgeting_view" model="ir.actions.act_window">
+        <field name="name">Presupuesto de Requisiciones</field>
+        <field name="path">requisition_budgeting</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">requisition.budgeting</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_requisition_budgeting_search"/>
+    </record>
+    <record id="action_requisition_budgeting_view_form" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="action_requisition_budgeting_view"/>
+        <field name="sequence" eval="20"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_requisition_budgeting_form"/>
+    </record>
+    <record id="action_requisition_budgeting_view_list" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="action_requisition_budgeting_view"/>
+        <field name="sequence" eval="10"/>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="view_requisition_budgeting_list"/>
+    </record>
+</odoo>

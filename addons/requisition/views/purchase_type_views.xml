@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_purchase_type_list" model="ir.ui.view">
+        <field name="name">purchase.type.list</field>
+        <field name="model">purchase.type</field>
+        <field name="arch" type="xml">
+            <list string="Tipo de ordenes de compra" editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name" />
+                <field name="active" />
+            </list>
+        </field>
+    </record>
+    <record id="view_purchase_type_search" model="ir.ui.view">
+        <field name="name">purchase.type.search</field>
+        <field name="model">purchase.type</field>
+        <field name="arch" type="xml">
+            <search string="Tipo de ordenes de compra">
+                <field name="name" />
+            </search>
+        </field>
+    </record>
+    <record id="action_purchase_type_view" model="ir.actions.act_window">
+        <field name="name">Tipo de ordenes de compra</field>
+        <field name="path">purchase_type</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchase.type</field>
+        <field name="binding_view_types">list</field>
+        <field name="view_mode">list</field>
+        <field name="search_view_id" ref="view_purchase_type_search"/>
+    </record>
+    <record id="action_purchase_type_view_list" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="action_purchase_type_view"/>
+        <field name="sequence" eval="10"/>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="view_purchase_type_list"/>
+    </record>
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="ir.module.category" id="requisition.module_category_requisition">
+            <field name="name">Requisiciones</field>
+            <field name="description">Le ayuda a gestionar las requisiciones.            
+    Revisores: Permisos solo de lectura
+    Digitador: Permisos para lectura he ingresar información
+    Biologos: Permisos de aprobacion en finca
+    Aprobadores: Permisos de aprobacion en compras
+    Administrator: Todos los permisos
+            </field>
+            <field name="sequence">7</field>
+        </record>
+
+        <record id="group_requisition_reviewers" model="res.groups">
+            <field name="name">Revisores</field>
+            <field name="category_id" ref="requisition.module_category_requisition"/>
+        </record>
+
+        <record id="group_requisition_data_entry" model="res.groups">
+            <field name="name">Digitador</field>
+            <field name="implied_ids" eval="[(4, ref('group_requisition_reviewers'))]"/>
+            <field name="category_id" ref="requisition.module_category_requisition"/>
+        </record>
+
+        <record id="group_requisition_biologists" model="res.groups">
+            <field name="name">Biologos</field>
+            <field name="implied_ids" eval="[(4, ref('group_requisition_data_entry'))]"/>
+            <field name="category_id" ref="requisition.module_category_requisition"/>
+        </record>
+
+        <record id="group_requisition_Approver" model="res.groups">
+            <field name="name">Aprobadores</field>
+            <field name="implied_ids" eval="[(4, ref('group_requisition_biologists'))]"/>
+            <field name="category_id" ref="requisition.module_category_requisition"/>
+        </record>
+
+        <record id="group_requisition_manager" model="res.groups">
+            <field name="name">Administrator</field>
+            <field name="category_id" ref="requisition.module_category_requisition"/>
+            <field name="implied_ids" eval="[(4, ref('group_requisition_Approver'))]"/>
+            <field name="users" eval="[(4, ref('base.group_system'))]"/>
+        </record>
+    </data>
+</odoo>

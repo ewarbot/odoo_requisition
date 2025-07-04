@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_requisition_root"
+              name="Requisiciones"
+              groups="requisition.group_requisition_reviewers"
+              sequence="220"
+              web_icon="requisition,static/description/icon.png"
+              />
+
+        <menuitem id="menu_requisition"
+                  name="Requisiciones"
+                  parent="requisition.menu_requisition_root"
+                  groups="requisition.group_requisition_reviewers"
+                  sequence="100"/>
+            <menuitem
+                id="menu_requisition_child"
+                name="Requisiciones"
+                parent="requisition.menu_requisition"
+                groups="requisition.group_requisition_reviewers"
+                sequence="10"
+            />
+                <menuitem 
+                    id="menu_requisition_all" 
+                    name="Requisiciones Generadas"
+                    action ="action_requisition_all_view" 
+                    parent="menu_requisition_child" 
+                    groups="requisition.group_requisition_reviewers"
+                    sequence="11"/>
+                <menuitem 
+                    id="menu_requisition_confirmed" 
+                    name="Requisiciones Confirmadas"  
+                    action ="action_requisition_confirmed_view" 
+                    parent="menu_requisition_child" 
+                    groups="requisition.group_requisition_reviewers"
+                    sequence="12"/>
+                <menuitem 
+                    id="menu_requisition_approved" 
+                    name="Requisiciones Aprobadas"  
+                    action ="action_requisition_approved_view" 
+                    parent="menu_requisition_child" 
+                    groups="requisition.group_requisition_reviewers"
+                    sequence="13"/>
+            <menuitem
+                id="menu_requisition_tmpl"
+                name="Planitllas"
+                parent="requisition.menu_requisition"
+                groups="requisition.group_requisition_reviewers"
+                sequence="20"
+                />
+                <menuitem 
+                    id="menu_requisition_tmpl_child" 
+                    name="Planitlla de requisiciones"
+                    action ="action_requisition_template_view" 
+                    parent="menu_requisition_tmpl" 
+                    groups="requisition.group_requisition_reviewers"
+                    sequence="21"/>
+                
+        <menuitem id="menu_requisition_settings"
+                  name="Configuraciones"
+                  parent="requisition.menu_requisition_root"
+                  groups="requisition.group_requisition_manager"
+                  sequence="100"/>
+            <menuitem
+                id="settings_requisition_menu"
+                name="Configuración requisiciones"
+                parent="requisition.menu_requisition_settings"
+                groups="requisition.group_requisition_manager"
+                sequence="110"
+            />
+                <menuitem
+                    id="settings_purchase_type_menu"
+                    action="action_purchase_type_view"
+                    parent="requisition.settings_requisition_menu"
+                    groups="requisition.group_requisition_manager"
+                    sequence="1"/>
+                <menuitem
+                    id="settings_requisition_budgeting_menu"
+                    action="action_requisition_budgeting_view"
+                    parent="requisition.settings_requisition_menu"
+                    groups="requisition.group_requisition_manager"
+                    sequence="2"/>
+
+            <menuitem
+                id="settings_date_range_menu"
+                name="Configuración rango de fechas"
+                parent="requisition.menu_requisition_settings"
+                sequence="120"
+                groups="requisition.group_requisition_manager"
+                />
+                <menuitem
+                    id="settings_date_range_requisition_menu"
+                    name="Rangos de fechas"
+                    action="date_range.date_range_action"
+                    parent="requisition.settings_date_range_menu"
+                    sequence="1"
+                    groups="requisition.group_requisition_manager"
+                />
+                <menuitem
+                    id="settings_date_range_type_requisition_menu"
+                    name="Tipos de rango de fechas"
+                    action="date_range.date_range_type_action"
+                    parent="requisition.settings_date_range_menu"
+                    sequence="2"
+                    groups="requisition.group_requisition_manager"
+                />
+                <menuitem
+                    id="settings_date_range_generator_requisition_menu"
+                    name="Generar rango de fechas"
+                    action="date_range.date_range_generator_action"
+                    parent="requisition.settings_date_range_menu"
+                    sequence="3"
+                    groups="requisition.group_requisition_manager"
+                />
+
+                
+</odoo>

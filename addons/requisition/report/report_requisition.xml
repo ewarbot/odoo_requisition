@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+
+    <record id="action_report_requisition" model="ir.actions.report">
+      <field name="name">Reporte de Requisiciones</field>
+      <field name="model">requisition</field>
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">requisition.report_requisition</field>
+      <field name="paperformat_id" ref="requisition.paperformat_requisition_report"/>
+      <field name="print_report_name">'Requisicion - ' + object.name</field>
+      <field name="attachment_use">False</field>
+    </record>
+
+    <template id="report_requisition">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+          <t t-call="web.external_layout">
+            <div class="header col-xs-12">
+              <div class="col-xs-3">
+                <img style="width:80px; height:80px;"
+                     t-if="o.company_id.logo"
+                     t-att-src="'data:image/png;base64,%s' % o.company_id.logo.decode()"/>
+              </div>
+              <div class="col-xs-6 text-center">
+                <strong style="font-size:14px;">
+                  <t t-esc="o.company_id.name"/>
+                </strong><br/>
+                <strong>REQUISICIÓN </strong>
+                <strong t-esc="o.requisition_budgeting_id.name"/>
+                <strong t-esc="o.name"/><br/>
+                <span style="font-size:12px;">
+                  <strong>SOLICITANTE:</strong>
+                  <span t-field="o.confirm_by"/>
+
+                  <strong>&#160;&#160;ESTADO:</strong>
+                  <t t-if="o.state=='draft'">BORRADOR</t>
+                  <t t-elif="o.state=='rejected'">RECHAZADO</t>
+                  <t t-elif="o.state=='confirmed'">CONFIRMADO</t>
+                  <t t-elif="o.state=='approved'">APROBADO</t>
+                  <t t-elif="o.state=='budgeted'">PROFORMA</t>
+                  <t t-elif="o.state=='canceled'">ANULADO</t><br/>
+
+                  <strong>AUTORIZADO:</strong> <span t-field="o.approver_by"/>
+                  <strong>&#160;&#160;EMISIÓN:</strong>
+                  <span t-field="o.requisition_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                </span>
+              </div>
+              <div class="col-xs-3" style="font-size:10px;">
+                <strong style="margin-left:30px;">Fecha:</strong>
+                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/><br/>
+                <strong style="margin-left:30px;">Hora:</strong>
+                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%H:%M')"/><br/>
+                <strong style="margin-left:30px;">Usuario:</strong>
+                <span t-esc="user.name"/><br/>
+                <ul class="list-inline" style="font-size:10px;">
+                  <li class="list-inline-item"><strong style="margin-left:30px;">Pag:</strong></li>
+                  <li class="list-inline-item"><span class="page"/></li>
+                  <li class="list-inline-item">/</li>
+                  <li class="list-inline-item"><span class="topage"/></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="article">
+              <table class="table table-bordered table-condensed"
+                     style="border:2px solid;font-size:10px;width:100%;">
+                <thead>
+                  <tr class="active">
+                    <th style="border:1px solid;">PRODUCTO/ITEM</th>
+                    <th style="border:1px solid;" class="text-center">UNID. COMPRA</th>
+                    <th style="border:1px solid;" class="text-center">CANT. PED.</th>
+                    <th style="border:1px solid;" class="text-center">CANT. APB.</th>
+                    <th style="border:1px solid;">PRECIO</th>
+                    <th style="border:1px solid;" class="text-center">TOT. ITEM</th>
+                    <th style="border:1px solid;" class="text-center">OBSERVACIÓN</th>
+                    <th style="border:1px solid;">OBSER. COMPRAS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <t t-set="cats" t-value="list(set([l.product_id.categ_id.name for l in o.requisition_line_ids]))"/>
+                  <t t-foreach="cats.sort()" t-as="cname">
+                    <tr>
+                      <td colspan="8" style="border:1px solid;">
+                        <strong><t t-esc="cname"/></strong>
+                      </td>
+                    </tr>
+                    <t t-set="totalcat" t-value="0.0"/>
+                    <t t-foreach="o.requisition_line_ids" t-as="l">
+                      <t t-if="l.product_id.categ_id.name == cname">
+                        <tr>
+                          <td style="border:1px solid;">
+                            <span t-field="l.name"/>
+                          </td>
+                          <td style="border:1px solid;">
+                            <span t-field="l.product_uom_id.name"/>
+                          </td>
+                          <td style="border:1px solid;text-align:center;">
+                            <t t-esc="'{0:.2f}'.format(l.quantity).replace('.', ',')"/>
+                          </td>
+                          <td style="border:1px solid;text-align:center;">
+                            <t t-esc="'{0:.2f}'.format(l.approved_quantity).replace('.', ',')"/>
+                          </td>
+                          <td style="border:1px solid;">
+                            <span t-field="l.unit_cost"/>
+                          </td>
+                          <td style="border:1px solid;text-align:center;">
+                            <span t-field="l.sub_total"
+                                  t-field-options="{
+                                    'widget': 'monetary',
+                                    'display_currency': o.company_id.currency_id
+                                  }"/>
+                          </td>
+                          <td style="border:1px solid;">
+                            <t t-esc="l.observation"/>
+                          </td>
+                          <td style="border:1px solid;">
+                            <t t-esc="l.observation_purchase"/>
+                          </td>
+                        </tr>
+                        <t t-set="totalcat" t-value="totalcat + l.sub_total"/>
+                      </t>
+                    </t>
+                    <tr class="border-black">
+                      <td colspan="5" align="right" style="border:1px solid;">
+                        <strong>TOTAL <t t-esc="cname"/>:</strong>
+                      </td>
+                      <td colspan="3" style="border:1px solid;">
+                        <strong>
+                          <t t-esc="formatLang(totalcat, currency_obj=o.company_id.currency_id)"/>
+                        </strong>
+                      </td>
+                    </tr>
+                  </t>
+                </tbody>
+              </table>
+
+              <table class="table table-bordered table-condensed"
+                     style="border:2px solid;font-size:10px;width:100%;">
+                <tr>
+                  <td>CUPO ASIGNADO:</td>
+                  <td>
+                    <span t-esc="formatLang(o.budget, currency_obj=o.company_id.currency_id)"/>
+                  </td>
+                  <td>TOTAL ITEMS:</td>
+                  <td>
+                    <span t-esc="formatLang(
+                        sum([l.sub_total for l in o.requisition_line_ids]),
+                        currency_obj=o.company_id.currency_id
+                      )"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CUPO UTILIZADO:</td>
+                  <td>
+                    <span t-esc="formatLang(
+                        sum([l.sub_total for l in o.requisition_line_ids]),
+                        currency_obj=o.company_id.currency_id
+                      )"/>
+                  </td>
+                  <td>TOTAL APROBADO:</td>
+                  <td>
+                    <span t-esc="formatLang(
+                        sum([l.approved_quantity * l.unit_cost for l in o.requisition_line_ids]),
+                        currency_obj=o.company_id.currency_id
+                      )"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>SALDO:</td>
+                  <td>
+                    <span t-esc="formatLang(
+                        o.budget - sum([l.sub_total for l in o.requisition_line_ids]),
+                        currency_obj=o.company_id.currency_id
+                      )"/>
+                  </td>
+                  <td>DEUDA PENDIENTE:</td>
+                  <td><!-- Campo adicional si aplica --></td>
+                </tr>
+              </table>
+            </div>
+          </t>
+        </t>
+      </t>
+    </template>
+
+  </data>
+</odoo>

@@ -1,0 +1,56 @@
+services:
+  db:
+    container_name: odoo18_db
+    image: postgres:17
+    user: root
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo@2025
+      - POSTGRES_DB=postgres
+    restart: always
+    volumes:
+      - odoo_req_db_data:/var/lib/postgresql/data
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "30"
+
+  web:
+    init: true
+    container_name: odoo18_web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    user: odoo
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+      - "5678:5678" 
+    command:
+      - --dev=all
+    environment:
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=odoo@2025
+            # - DEBUG_PORT=5678
+      - PYDEVD_DISABLE_FILE_VALIDATION=1
+    volumes:
+      - odoo_req_web_data:/var/lib/odoo
+      - ./:/workspace
+      - ./addons:/mnt/extra-addons
+      - ./config/odoo.conf:/etc/odoo/odoo.conf
+      - ./config/entrypoint.sh:/entrypoint.sh
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "30"
+
+volumes:
+  odoo_req_web_data:
+  odoo_req_db_data:

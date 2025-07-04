@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="purchase_type_1" model="purchase.type">
+            <field name="name">Administrativas</field>
+        </record>
+        <record id="purchase_type_2" model="purchase.type">
+            <field name="name">Mantenimiento</field>
+        </record>
+        <record id="purchase_type_3" model="purchase.type">
+            <field name="name">Producción</field>
+        </record>
+        <record id="purchase_type_4" model="purchase.type">
+            <field name="name">Seguridad</field>
+        </record>
+    </data>
+</odoo>
