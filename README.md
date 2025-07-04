@@ -146,9 +146,6 @@ exec odoo-bin --config=/mnt/extra-addons/.config/odoo.conf "$@"
 
   <h2>💻 Comandos Útiles</h2>
 
-  <h3>Login a GitHub Container Registry</h3>
-  <pre><code>echo "&lt;TU_GITHUB_TOKEN&gt;" | docker login ghcr.io -u &lt;TU_USUARIO_GITHUB&gt; --password-stdin</code></pre>
-
   <h3>Levantar en modo desarrollo</h3>
   <pre><code>docker-compose up --build</code></pre>
 
