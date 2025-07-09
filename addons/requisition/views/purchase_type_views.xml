@@ -4,7 +4,7 @@
         <field name="name">purchase.type.list</field>
         <field name="model">purchase.type</field>
         <field name="arch" type="xml">
-            <list string="Tipo de ordenes de compra" editable="bottom">
+            <list string="Type Requisition" editable="bottom">
                 <field name="sequence" widget="handle"/>
                 <field name="name" />
                 <field name="active" />
@@ -15,13 +15,13 @@
         <field name="name">purchase.type.search</field>
         <field name="model">purchase.type</field>
         <field name="arch" type="xml">
-            <search string="Tipo de ordenes de compra">
+            <search string="Type requisition">
                 <field name="name" />
             </search>
         </field>
     </record>
     <record id="action_purchase_type_view" model="ir.actions.act_window">
-        <field name="name">Tipo de ordenes de compra</field>
+        <field name="name">Type requisition</field>
         <field name="path">purchase_type</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">purchase.type</field>

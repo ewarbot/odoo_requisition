@@ -6,9 +6,8 @@ class PurchaseType(models.Model):
     _name = "purchase.type"
     _inherit = ['mail.thread']
     _order = 'sequence,name,id'
-    _description = "Tipo de compra"
+    _description = "purchase type"
 
-    name = fields.Char(string='Nombre', required=True, tracking=True)
+    name = fields.Char(string='Name', required=True, tracking=True)
     active = fields.Boolean(default=True, tracking=True)
-    sequence = fields.Integer('Secuencia', default=10)
-    
+    sequence = fields.Integer('Sequence', default=10)

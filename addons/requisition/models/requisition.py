@@ -11,43 +11,43 @@ class Requisition(models.Model):
     _name = 'requisition'
     _inherit = ['mail.thread']
     _order='period_id desc'
-    _description = 'Requisición'
+    _description = 'Requisition'
 
 
-    name = fields.Char('Nombre', default='*')
-    requisition_budgeting_id = fields.Many2one('requisition.budgeting',  string='Tipo de Requisición')
-    company_id = fields.Many2one('res.company', string='Compañia',
+    name = fields.Char('Name', default='*')
+    requisition_budgeting_id = fields.Many2one('requisition.budgeting',  string='Requisition Type')
+    company_id = fields.Many2one('res.company', string='Company',
                                  required=True, readonly=True,
                                  default=lambda self: self.env.company)
     currency_id = fields.Many2one('res.currency', string='Currency',
                                 required=True, readonly=True,
                                 default=lambda self: self.env.company.currency_id.id)
     active = fields.Boolean(default=True, tracking=True)
-    requisition_date = fields.Datetime(string='Fecha de Creación de Requisición', readonly=True, index=True, default=fields.Datetime.now, copy=False)
-    state = fields.Selection(STATE_LIST, string='Estado', required=True, readonly=True, default='draft', tracking=True)
+    requisition_date = fields.Datetime(string='Requisition Creation Date', readonly=True, index=True, default=fields.Datetime.now, copy=False)
+    state = fields.Selection(STATE_LIST, string='State', required=True, readonly=True, default='draft', tracking=True)
     requisition_line_ids = fields.One2many('requisition.line', 'requisition_id')
-    budget = fields.Monetary('Cupo', currency_field='currency_id', copy=False)
-    total_requisition = fields.Monetary('Total de Requisición', tracking=True, compute="_compute_total", store=True, currency_field='currency_id')
-    difference_value = fields.Monetary('Saldo disponible', tracking=True, compute="_compute_difference", currency_field='currency_id')
+    budget = fields.Monetary('Budget', currency_field='currency_id', copy=False)
+    total_requisition = fields.Monetary('Total Requisition', tracking=True, compute="_compute_total", store=True, currency_field='currency_id')
+    difference_value = fields.Monetary('Available Balance', tracking=True, compute="_compute_difference", currency_field='currency_id')
     purchase_order_ids = fields.One2many('purchase.order', 'requisition_id', copy=False)
-    purchase_order_count = fields.Integer(string="Proformas", compute="_compute_purchase_count", tracking=True, copy=False)
-    partner_id = fields.Many2one('res.partner', string='Responsable', tracking=True, default=lambda self: self.env.user.partner_id.id, copy=False)
-    range_type_id = fields.Many2one('date.range.type', string='Tipo de periodo')
-    period_id = fields.Many2one('date.range', string="Periodo", tracking=True, 
+    purchase_order_count = fields.Integer(string="Purchase Orders", compute="_compute_purchase_count", tracking=True, copy=False)
+    partner_id = fields.Many2one('res.partner', string='Responsible', tracking=True, default=lambda self: self.env.user.partner_id.id, copy=False)
+    range_type_id = fields.Many2one('date.range.type', string='Period Type')
+    period_id = fields.Many2one('date.range', string="Period", tracking=True, 
     domain="[('type_id','=', range_type_id),('date_end','>=',requisition_date)]", copy=False)
-    level = fields.Selection(LEVEL_LIST, string='Nivel', tracking=True)
-    notes = fields.Text('Notas', tracking=True)    
-    confirm_by = fields.Char('Confirmado Por', readonly=True, copy=False)
-    date_confirm = fields.Date('Fecha de Confirmacion', readonly=True, copy=False)
-    approver_by = fields.Char('Aprobado Por', readonly=True, copy=False)
-    date_approve = fields.Date('Fecha de Aprobacion', readonly=True, copy=False)
-    is_quota = fields.Boolean(string='Es por cuotas', related='requisition_budgeting_id.is_quota', store=True)
+    level = fields.Selection(LEVEL_LIST, string='Level', tracking=True)
+    notes = fields.Text('Notes', tracking=True)    
+    confirm_by = fields.Char('Confirmed By', readonly=True, copy=False)
+    date_confirm = fields.Date('Confirmation Date', readonly=True, copy=False)
+    approver_by = fields.Char('Approved By', readonly=True, copy=False)
+    date_approve = fields.Date('Approval Date', readonly=True, copy=False)
+    is_quota = fields.Boolean(string='Is Quota', related='requisition_budgeting_id.is_quota', store=True)
     requisition_status = fields.Char(
-            string='Estado Requisición',
+            string='Requisition Status',
             compute='_compute_requisition_status',
             store=True
         )
-    requisition_tmpl_id = fields.Many2one('requisition.template',string='Plantilla de requisiciones', ondelete='cascade')
+    requisition_tmpl_id = fields.Many2one('requisition.template',string='Requisition Template', ondelete='cascade')
 
     @api.onchange('requisition_tmpl_id')
     def onchange_requisition_tmpl(self):
@@ -59,7 +59,7 @@ class Requisition(models.Model):
         if self.requisition_tmpl_id:
             self.requisition_line_ids = [
                 (0, 0, {'product_id': product_id})
-                for product_id in self.requisition_tmpl_id.req_template_line_ids.mapped('product_id.id')
+                for product_id in self.requisition_tmpl_id.requisition_tmpl_line_id.mapped('product_id.id')
             ]
 
     @api.model_create_multi
@@ -78,7 +78,7 @@ class Requisition(models.Model):
 
     @api.depends('state')
     def _compute_requisition_status(self):
-        """Campo computado para el estado de la requisición"""
+        """Field computed for the requisition status"""
         for record in self:
             record.requisition_status = STATE_TO_STATUS.get(record.state)
             record.send_mail()
@@ -115,8 +115,8 @@ class Requisition(models.Model):
     @api.onchange('period_id', 'requisition_budgeting_id')
     def _onchange_period_id(self):
         """
-        Este método se activa cuando cambia period_id o requisition_budgeting_id. 
-        Establece range_type_id según el requisition_budgeting_id seleccionado.
+        This method is triggered when period_id or requisition_budgeting_id changes.
+        Sets range_type_id based on the selected requisition_budgeting_id.
         """
         if not self.period_id or not self.requisition_budgeting_id or self.level == 'administrative':
             return
@@ -133,8 +133,8 @@ class Requisition(models.Model):
             existing_req = Requisition.search(maintenance_domain, limit=1)
             if existing_req:
                 error_messages.append(
-                    "No puede generar otra requisición de mantenimiento mientras exista una en proceso: "
-                    f"{existing_req.name} (Estado: {existing_req.state})"
+                    "Cannot generate another maintenance requisition while one is in progress: "
+                    f"{existing_req.name} (Status: {existing_req.state})"
                 )
         period_domain = base_domain + [
             ('period_id', '=', self.period_id.id),
@@ -144,11 +144,11 @@ class Requisition(models.Model):
         if len(existing_period_reqs) >= 1:
             req_names = ", ".join(existing_period_reqs.mapped('name'))
             error_messages.append(
-                "Solo puede crear una requisición por periodo. "
-                f"Existen: {req_names}"
+                "Only one requisition can be created per period. "
+                f"Existing: {req_names}"
             )
         if error_messages:
-            error_title = "Validación de Requisiciones"
+            error_title = "Requisition Validation"
             full_message = f"{error_title}\n\n" + "\n\n- ".join(error_messages)
             return {
                 'warning': {
@@ -183,17 +183,17 @@ class Requisition(models.Model):
         return action   
     
     def action_confirm(self):
-        """Valida y confirma la requisición optimizando recursos"""
+        """Validate and confirm the requisition optimizing resources"""
         self.ensure_one()
 
         if not self.requisition_line_ids:
-            raise ValidationError("No puede confirmar una requisición sin productos")
-        
+            raise ValidationError("Cannot confirm a requisition without products")
+
         today = fields.Date.context_today(self)
         
         if today < self.period_id.date_start:
-            raise ValidationError("No puede confirmar una requisición de un periodo futuro")
-        
+            raise ValidationError("Cannot confirm a requisition from a future period")
+
         self.zero_product_control()
         
         self.write({
@@ -216,16 +216,16 @@ class Requisition(models.Model):
         })
 
     def action_cancel(self):
-        """Cancela la requisición optimizando recursos"""
+        """Cancels the requisition optimizing resources"""
         self.update_lines()
         self.write({
             'state': 'canceled'
         })
 
     def zero_product_control(self):
-        """Verifica líneas con cantidad cero en lote"""
+        """Verifies lines with zero quantity in batch"""
         if self.requisition_line_ids.filtered(lambda l: l.quantity <= 0):
-            raise ValidationError('No puede enviar productos con cantidad menor o igual a 0')
+            raise ValidationError('Cannot send products with quantity less than or equal to 0')
 
     def compare_query(self):               
         for record in self:
@@ -246,7 +246,7 @@ class Requisition(models.Model):
         return False
 
     def compare_query(self):
-        """Verifica existencia de líneas duplicadas de manera optimizada"""
+        """Verifies existence of duplicate lines in an optimized way"""
         self.ensure_one()
         
         domains = []
@@ -267,7 +267,7 @@ class Requisition(models.Model):
         ) > 0
 
     def action_give_back(self):
-        """Manejo optimizado de la reversión a borrador"""
+        """Optimized handling of reverting to draft"""
         for record in self:
             record.write({
                 'state': 'draft',
@@ -278,13 +278,13 @@ class Requisition(models.Model):
             })
 
     def update_lines(self, cond=False):
-        """Actualiza líneas de requisición usando ORM de forma optimizada"""
+        """Updates requisition lines using ORM in an optimized way"""
         if not self:
             return
 
 
     def verify_suppliers(self):
-        """Verificación masiva de proveedores faltantes"""
+        """Mass verification of missing suppliers"""
         invalid_lines = self.requisition_line_ids.filtered(
             lambda l: not l.seller_id and not l.purchased_product
         )
@@ -292,12 +292,12 @@ class Requisition(models.Model):
         if invalid_lines:
             products = invalid_lines.mapped('product_id.display_name')
             raise ValidationError(
-                "Productos sin proveedor asignado:\n- %s" % 
+                "Products without assigned supplier:\n- %s" % 
                 "\n- ".join(products)
             )
 
     def update_seller(self):
-        """Actualización masiva de proveedores optimizada"""
+        """Massive supplier update optimized"""
         SellerInfo = self.env['product.supplierinfo'].sudo()
         suppliers_to_create = []
         
@@ -392,19 +392,19 @@ class Requisition(models.Model):
         
     def modified_products(self):
         extra_body = ""
-        if self.requisition_status == 'Confirmada':
+        if self.requisition_status == 'Confirmed':
             for line in self.requisition_line_ids:
                 if line.quantity != line.approved_quantity:
-                    extra_body += f"Producto: {line.name} - Cantidad: {line.approved_quantity} <br>"
+                    extra_body += f"Product: {line.name} - Quantity: {line.approved_quantity} <br>"
         return extra_body
 
     def send_mail(self):
         extra = self.modified_products()
-        extra_body = f"Productos aprobados con cambios: <br><br>{extra}" if extra else ""
+        extra_body = f"Approved products with changes: <br><br>{extra}" if extra else ""
         mail_body = (
-            f"Para su conocimiento la requisición Nº {self.name} acaba de ser {self.requisition_status}.<br>"
+            f"For your information, requisition No. {self.name} has just been {self.requisition_status}.<br>"
             f"{extra_body}<br> "
-            "Para consultas puede comunicarse a Sistemas."
+            "For inquiries, please contact Systems."
         )
         mails_list = self.get_mails()
         if not mails_list:
@@ -412,7 +412,7 @@ class Requisition(models.Model):
         mail_vals = {
             'email_from': self.company_id.requisition_mail or self.company_id.email,
             'email_to': mails_list,
-            'subject': f"{self.company_id.name.upper()} REQUISICIÓN Nº {self.name.upper()} DE TIPO {self.requisition_budgeting_id.name.upper()} ACABA DE SER {self.requisition_status.upper()}",
+            'subject': f"{self.company_id.name.upper()} REQUISITION Nº {self.name.upper()} OF TYPE {self.requisition_budgeting_id.name.upper()} HAS JUST BEEN {self.requisition_status.upper()}",
             'body_html': mail_body,
             'auto_delete': True,
         }
@@ -428,7 +428,7 @@ class Requisition(models.Model):
                 if record.level == 'maintenance':
                     total = sum([line.sub_total_quotas for line in record.requisition_line_ids])   
                 if total > record.budget:
-                    raise ValidationError("El total de la requisición excede el presupuesto establecido")
+                    raise ValidationError("The total of the requisition exceeds the established budget")
 
     def dmn_requisition(self):
         dmn=[   

@@ -1,23 +1,23 @@
 STATE_LIST = [
-    ('draft', 'Borrador'), 
-    ('rejected', 'Rechazada'),
-    ('confirmed', 'Confirmado'),
-    ('approved', 'Aprobado'),
-    ('budgeted', 'Proforma'),
-    ('canceled', 'Anulado')
+    ('draft', 'Draft'), 
+    ('rejected', 'Rejected'),
+    ('confirmed', 'Confirmed'),
+    ('approved', 'Approved'),
+    ('budgeted', 'Budgeted'),
+    ('canceled', 'Canceled')
     ]
 
 LEVEL_LIST = [
         ('general', 'General'),
-        ('administrative', 'Administrativa'), 
-        ('maintenance', 'Mantenimiento')
+        ('administrative', 'Administrative'),
+        ('maintenance', 'Maintenance')
     ]
 
 STATE_TO_STATUS = {
-        'draft': 'Creada',
-        'rejected': 'Rechazada',
-        'confirmed': 'Confirmada',
-        'approved': 'Aprobada',
-        'budgeted': 'Enviada a Proforma',
-        'canceled': 'Anulada'
+        'draft': 'Created',
+        'rejected': 'Rejected',
+        'confirmed': 'Confirmed',
+        'approved': 'Approved',
+        'budgeted': 'Sent to Proforma',
+        'canceled': 'Canceled'
     }

@@ -3,14 +3,14 @@ from datetime import datetime
 
 class DateRange(models.Model):
     _inherit = "date.range"
-    _description = "Rango de Fechas Requisición"
+    _description = "Requisition Date Range"
     _rec_name = 'description'
 
-    description = fields.Char(compute='_compute_period_description', string="Periodo")
+    description = fields.Char(compute='_compute_period_description', string="Period")
 
     @api.depends('date_start', 'date_end')
     def _compute_period_description(self):
-        """Cálculo optimizado de la descripción del periodo"""
+        """Calculate optimized period description"""
         date_format = '%d/%m/%Y'
         for record in self:
             if record.date_start and record.date_end:
@@ -18,4 +18,4 @@ class DateRange(models.Model):
                 end = fields.Date.from_string(record.date_end).strftime(date_format)
                 record.description = f"{start} - {end}"
             else:
-                record.description = "Periodo no definido"
+                record.description = "Period not defined"

@@ -5,21 +5,21 @@ from odoo.exceptions import ValidationError
 class RequisitionBudgeting(models.Model):
     _name = 'requisition.budgeting'
     _inherit = ['mail.thread']
-    _description = 'Presupuesto de Requisiciones'
+    _description = 'Budgeting for Requisitions'
     _order = "id,sequence"
 
-    name = fields.Char(string="Nombre")
+    name = fields.Char(string="Name")
     active = fields.Boolean(default=True)
     sequence = fields.Integer(default=1)
-    budget = fields.Monetary('Presupuesto', tracking=True, currency_field='currency_id')
-    range_type_id = fields.Many2one('date.range.type', string='Periodo')
-    purchase_type_id = fields.Many2one('purchase.type', string='Tipo de Orden')
+    budget = fields.Monetary('Budget', tracking=True, currency_field='currency_id')
+    range_type_id = fields.Many2one('date.range.type', string='Period')
+    purchase_type_id = fields.Many2one('purchase.type', string='Purchase Type')
     level = fields.Selection([
         ('general', 'General'),
-        ('administrative', 'Administrativa'), 
-        ('maintenance', 'Mantenimiento')], 
-        string='Nivel', required=True, default='general')
-    company_id = fields.Many2one('res.company', string='Compañia',
+        ('administrative', 'Administrative'), 
+        ('maintenance', 'Maintenance')], 
+        string='Level', required=True, default='general')
+    company_id = fields.Many2one('res.company', string='Company',
                                  required=True, readonly=True,
                                  default=lambda self: self.env.company)
     currency_id = fields.Many2one('res.currency', string='Currency',
@@ -27,10 +27,10 @@ class RequisitionBudgeting(models.Model):
                                 default=lambda self: self.env.company.currency_id.id)
     budget_line_ids = fields.One2many('requisition.budgeting.line', 'budgeting_id')
     requisition_mail_ids = fields.One2many('requisition.mail', 'budgeting_id')
-    sequence_id = fields.Many2one('ir.sequence', 'Secuencia')
-    is_quota = fields.Boolean(string='Es por cuotas', default=False)
-    amount_quota = fields.Float(string='Monto máximo', help="Ingrese el valor del porcentaje en decimales")
-    number_quota = fields.Integer(string='Número de cuotas', help="Ingrese el número de cuotas")
+    sequence_id = fields.Many2one('ir.sequence', 'Sequence')
+    is_quota = fields.Boolean(string='Is Quota', default=False)
+    amount_quota = fields.Float(string='Max Amount', help="Enter the percentage value in decimals")
+    number_quota = fields.Integer(string='NNumber of Quotas', help="Enter the number of quotas")
 
     @api.onchange('is_quota')
     def onchange_is_quota(self):
@@ -50,7 +50,7 @@ class RequisitionBudgeting(models.Model):
             company_name = record.company_id.name[:3].upper()
             requisition_type_name = record.name[:3].upper()
             if not requisition_type_name:
-                raise ValidationError(_('El nombre de la requisición no puede estar vacío.'))
+                raise ValidationError(_('The requisition name cannot be empty.'))
             requisition_vals ={
                 'name': f'requisition {record.name}',
                 'code': f'requisition {record.name}',
@@ -64,7 +64,7 @@ class RequisitionBudgeting(models.Model):
 
 class RequisitionBudgetLine(models.Model):
     _name = 'requisition.budgeting.line'
-    _description = 'Lineas de presupuesto de requisiciones'
+    _description = 'Budget Lines for Requisitions'
     _order = "id,sequence"
 
     def _default_category_id(self):

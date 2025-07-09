@@ -5,7 +5,7 @@
 		<field name="name">requisition.list</field>
 		<field name="model">requisition</field>
 		<field name="arch" type="xml">
-			<list string="Requisiciones">
+			<list string="Requisitions">
 				<field name="name" />
 				<field name="company_id" />
 				<field name="requisition_budgeting_id" />
@@ -21,60 +21,60 @@
 		<field name="name">requisition.form</field>
 		<field name="model">requisition</field>
 		<field name="arch" type="xml">
-			<form string="Requisiciones" duplicate='false'>
+			<form string="Requisitions" duplicate='false'>
 				<header style="position: sticky;top: 0;z-index: 10">
 
                     <button name="action_confirm" 
-                        string="Confirmar" 
+                        string="Confirm" 
                         invisible="state not in ('draft','rejected')" 
                         groups="requisition.group_requisition_biologists,requisition.group_requisition_manager"
                         type="object" 
                         class="oe_highlight"/>
 
                     <button name="action_rejected" 
-                        string="Rechazar" 
+                        string="Reject" 
                         invisible="state != 'confirmed'" 
                         groups="requisition.group_requisition_Approver,requisition.group_requisition_manager"
                         type="object" 
                         class="oe_highlight"/>
 
                     <button name="action_approve" 
-                        string="Aprobar" 
+                        string="Approve" 
                         invisible="state != 'confirmed'" 
                         groups="requisition.group_requisition_Approver,requisition.group_requisition_manager"
                         type="object" 
                         class="oe_highlight"/>
 
                     <button name="action_cancel" 
-                        string="Anular" 
+                        string="Cancel" 
                         invisible="state not in ('draft','rejected')" 
                         groups="requisition.group_requisition_Approver,requisition.group_requisition_manager"
                         type="object" 
                         class="oe_highlight"/>
 
                     <button name="action_generate_budgets" 
-                        string="Generar Presupuestos" 
+                        string="Generate Budgets" 
                         invisible="state != 'approved'"
                         groups="purchase.group_purchase_user,requisition.group_requisition_manager"
                         type="object" 
                         class="oe_highlight" />
 
                     <button name="action_give_back" 
-                        string="Devolver a Borrador" 
+                        string="Give Back to Draft" 
                         invisible="1" 
                         groups="requisition.group_requisition_Approver,requisition.group_requisition_manager"
                         type="object" 
                         class="oe_highlight"/>
                     
                     <button name="send_mail" 
-                        string="Enviar requisicion"
+                        string="Send Requisition"
                         invisible="state not in ('approved','budgeted')"
                         groups="purchase.group_purchase_user,requisition.group_requisition_manager"
                         type="object" 
                         class="oe_highlight" />
                         
                     <button name="action_print" 
-                        string="Imprimir"
+                        string="Print"
                         invisible="state not in ('approved','budgeted')"
                         type="object" 
                         class="oe_highlight" />
@@ -91,7 +91,7 @@
 
                     <div class="oe_title">
                         <h1>
-                            <field name="name" default_focus="1" placeholder="Nombre" readonly='1'/>
+                            <field name="name" default_focus="1" placeholder="Name" readonly='1'/>
                         </h1>
                     </div>
                     <group>
@@ -109,7 +109,7 @@
 						<group>
 							<field name="company_id" readonly="1" 
 							options="{'no_create': True, 'no_open': True}"/>
-							<field name="requisition_date" string="Fecha de creación de requisición" readonly="1" 
+							<field name="requisition_date" string="Creation Date" readonly="1" 
 							options="{'no_create': True, 'no_open': True}"/>												
 							<field name="currency_id" invisible="1"/>
 							<field name="confirm_by" force_save='1' invisible="1"/>
@@ -120,12 +120,12 @@
 						</group>
                     </group>
 					<notebook>
-						<page string="Productos" >
+						<page string="Products" >
 							<field name="requisition_line_ids" force_save='1' 
                             widget="product_label_section_and_note_field_o2m"
                             options="{'no_quick_create': True, 'no_create': True, 'no_open': True, 
                             'form_view_ref': 'requisition.action_requisition_line_view_form'}">
-                                <list string="Lineas de requisiciones" editable="bottom">
+                                <list string="Lines of Requisitions" editable="bottom">
                                     <field 
                                         name="product_id" 
                                         optional="show"
@@ -220,7 +220,7 @@
 								<field name="total_requisition" options="{'currency_field': 'currency_id'}"/>
 								<field name="difference_value" options="{'currency_field': 'currency_id'}"/>	
 							</group>
-							<field name="notes" class="oe_inline" placeholder="Escribas sus observaciones generales..."/>
+							<field name="notes" class="oe_inline" placeholder="Write your general observations..."/>
 						</page>
 					</notebook>
                 </sheet>
@@ -232,7 +232,7 @@
         <field name="name">requisition.search</field>
         <field name="model">requisition</field>
         <field name="arch" type="xml">
-            <search string="Presupuesto de Requisiciones">
+            <search string="Requisition Budget">
                 <field name="name"/>
                 <field name="company_id"/>
             </search>
@@ -240,7 +240,7 @@
     </record>
 
 	<record id="action_requisition_all_view" model="ir.actions.act_window">
-        <field name="name">Requisiciones generadas</field>
+        <field name="name">Generated Requisitions</field>
         <field name="path">requisition_all</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">requisition</field>
@@ -264,7 +264,7 @@
     </record>
 
 	<record id="action_requisition_confirmed_view" model="ir.actions.act_window">
-        <field name="name">Requisiciones confirmadas</field>
+        <field name="name">Confirmed Requisitions</field>
         <field name="path">requisition_confirmed</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">requisition</field>
@@ -288,7 +288,7 @@
     </record>
 	
 	<record id="action_requisition_approved_view" model="ir.actions.act_window">
-        <field name="name">Requisiciones aprobadas</field>
+        <field name="name">Approved Requisitions</field>
         <field name="path">requisition_approved</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">requisition</field>

@@ -1,0 +1,1161 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* requisition
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0-20250702\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-09 20:28+0000\n"
+"PO-Revision-Date: 2025-07-09 20:28+0000\n"
+"Last-Translator: \n"
+"Language-Team: Spanish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: requisition
+#: model:ir.actions.report,print_report_name:requisition.action_report_requisition
+msgid "'Requisicion - ' + object.name"
+msgstr "'Requisición - ' + object.name"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid ""
+"<br/>\n"
+"\n"
+"                  <strong>AUTORIZADO:</strong>"
+msgstr ""
+"<br/>\n"
+"\n"
+"                  <strong>AUTORIZADO:</strong>"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid ""
+"<br/>\n"
+"                <strong style=\"margin-left:30px;\">Hora:</strong>"
+msgstr ""
+"<br/>\n"
+"                <strong style=\"margin-left:30px;\">Hora:</strong>"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid ""
+"<br/>\n"
+"                <strong style=\"margin-left:30px;\">Usuario:</strong>"
+msgstr ""
+"<br/>\n"
+"                <strong style=\"margin-left:30px;\">Usuario:</strong>"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid ""
+"<br/>\n"
+"                <strong>REQUISICIÓN </strong>"
+msgstr ""
+"<br/>\n"
+"                <strong>REQUISICIÓN </strong>"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "<strong style=\"margin-left:30px;\">Fecha:</strong>"
+msgstr "<strong style=\"margin-left:30px;\">Fecha:</strong>"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "<strong style=\"margin-left:30px;\">Pag:</strong>"
+msgstr "<strong style=\"margin-left:30px;\">Pág:</strong>"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "<strong>SOLICITANTE:</strong>"
+msgstr "<strong>SOLICITANTE:</strong>"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "<strong>  EMISIÓN:</strong>"
+msgstr "<strong>  EMISIÓN:</strong>"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "<strong>  ESTADO:</strong>"
+msgstr "<strong>  ESTADO:</strong>"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "ANULADO"
+msgstr "ANULADO"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "APROBADO"
+msgstr "APROBADO"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__message_needaction
+#: model:ir.model.fields,field_description:requisition.field_requisition__message_needaction
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__message_needaction
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__message_needaction
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__message_needaction
+msgid "Action Needed"
+msgstr "Acción requerida"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__active
+#: model:ir.model.fields,field_description:requisition.field_requisition__active
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__active
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting_line__active
+#: model:ir.model.fields,field_description:requisition.field_requisition_mail__active
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: requisition
+#: model:ir.model.fields.selection,name:requisition.selection__requisition__level__administrative
+#: model:ir.model.fields.selection,name:requisition.selection__requisition_budgeting__level__administrative
+msgid "Administrative"
+msgstr "Administrativo"
+
+#. module: requisition
+#: model:res.groups,name:requisition.group_requisition_manager
+msgid "Administrator"
+msgstr "Administrador"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_budgeting_line_list
+msgid "All Categories"
+msgstr "Todas las categorías"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_budgeting_line_list
+msgid "All Products"
+msgstr "Todos los productos"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__date_approve
+msgid "Approval Date"
+msgstr "Fecha de aprobación"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_form_view
+msgid "Approve"
+msgstr "Aprobar"
+
+#. module: requisition
+#: model:ir.model.fields.selection,name:requisition.selection__requisition__state__approved
+#: model:ir.model.fields.selection,name:requisition.selection__requisition_mail__state__approved
+msgid "Approved"
+msgstr "Aprobado"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__approver_by
+msgid "Approved By"
+msgstr "Aprobado por"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__approved_quantity
+msgid "Approved Quantity"
+msgstr "Cantidad aprobada"
+
+#. module: requisition
+#: model:ir.actions.act_window,name:requisition.action_requisition_approved_view
+#: model:ir.ui.menu,name:requisition.menu_requisition_approved
+msgid "Approved Requisitions"
+msgstr "Requisiciones aprobadas"
+
+#. module: requisition
+#: model:res.groups,name:requisition.group_requisition_Approver
+msgid "Aprobadores"
+msgstr "Aprobadores"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.view_requisition_budgeting_form
+#: model_terms:ir.ui.view,arch_db:requisition.view_requisition_template_form
+msgid "Archived"
+msgstr "Archivado"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__message_attachment_count
+#: model:ir.model.fields,field_description:requisition.field_requisition__message_attachment_count
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__message_attachment_count
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__message_attachment_count
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__message_attachment_count
+msgid "Attachment Count"
+msgstr "Número de archivos adjuntos"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__difference_value
+msgid "Available Balance"
+msgstr "Saldo disponible"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "BORRADOR"
+msgstr "BORRADOR"
+
+#. module: requisition
+#: model:res.groups,name:requisition.group_requisition_biologists
+msgid "Biologos"
+msgstr "Biólogos"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__budget
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__budget
+msgid "Budget"
+msgstr "Presupuesto"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__budget_line_ids
+msgid "Budget Line"
+msgstr "Línea de presupuesto"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_budgeting_line_list
+msgid "Budget Lines"
+msgstr "Líneas de presupuesto"
+
+#. module: requisition
+#: model:ir.model,name:requisition.model_requisition_budgeting_line
+msgid "Budget Lines for Requisitions"
+msgstr "Líneas de presupuesto para requisiciones"
+
+#. module: requisition
+#: model:ir.model.fields.selection,name:requisition.selection__requisition__state__budgeted
+#: model:ir.model.fields.selection,name:requisition.selection__requisition_mail__state__budgeted
+msgid "Budgeted"
+msgstr "Presupuestado"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting_line__budgeting_id
+#: model:ir.model.fields,field_description:requisition.field_requisition_mail__budgeting_id
+msgid "Budgeting"
+msgstr "Planificación presupuestaria"
+
+#. module: requisition
+#: model:ir.model,name:requisition.model_requisition_budgeting
+msgid "Budgeting for Requisitions"
+msgstr "Presupuestos para requisiciones"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "CANT. APB."
+msgstr "CANT. APB."
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "CANT. PED."
+msgstr "CANT. PED."
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "CONFIRMADO"
+msgstr "CONFIRMADO"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "CUPO ASIGNADO:"
+msgstr "CUPO ASIGNADO:"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "CUPO UTILIZADO:"
+msgstr "CUPO UTILIZADO:"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_form_view
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: requisition
+#: model:ir.model.fields.selection,name:requisition.selection__requisition__state__canceled
+#: model:ir.model.fields.selection,name:requisition.selection__requisition_mail__state__canceled
+msgid "Canceled"
+msgstr "Cancelado"
+
+#. module: requisition
+#. odoo-python
+#: code:addons/requisition/models/requisition_line.py:0
+msgid "Cannot delete lines when the requisition is approved."
+msgstr "No se pueden eliminar líneas cuando la requisición está aprobada."
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__category_ids
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__product_uom_category_id
+#: model:ir.model.fields,field_description:requisition.field_requisition_template_line__category_ids
+msgid "Category"
+msgstr "Categoría"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__company_id
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__company_id
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting_line__company_id
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__company_id
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__company_id
+#: model:ir.model.fields,field_description:requisition.field_requisition_template_line__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: requisition
+#: model:ir.ui.menu,name:requisition.menu_requisition_settings
+msgid "Configuration"
+msgstr "Configuración"
+
+#. module: requisition
+#: model:ir.ui.menu,name:requisition.settings_date_range_menu
+msgid "Configuration date range"
+msgstr "Configuración de rango de fechas"
+
+#. module: requisition
+#: model:ir.model,name:requisition.model_requisition_mail
+msgid "Configuration of Requisition Emails"
+msgstr "Configuración de correos de requisición"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_form_view
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__date_confirm
+msgid "Confirmation Date"
+msgstr "Fecha de confirmación"
+
+#. module: requisition
+#: model:ir.model.fields.selection,name:requisition.selection__requisition__state__confirmed
+#: model:ir.model.fields.selection,name:requisition.selection__requisition_mail__state__confirmed
+msgid "Confirmed"
+msgstr "Confirmado"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__confirm_by
+msgid "Confirmed By"
+msgstr "Confirmado por"
+
+#. module: requisition
+#: model:ir.actions.act_window,name:requisition.action_requisition_confirmed_view
+#: model:ir.ui.menu,name:requisition.menu_requisition_confirmed
+msgid "Confirmed Requisitions"
+msgstr "Requisiciones confirmadas"
+
+#. module: requisition
+#: model:ir.model.fields,help:requisition.field_requisition_line__product_uom_category_id
+msgid ""
+"Conversion between Units of Measure can only occur if they belong to the "
+"same category. The conversion will be made based on the ratios."
+msgstr ""
+"La conversión entre Unidades de Medida solo puede ocurrir si pertenecen a la "
+"misma categoría. La conversión se realizará según las proporciones."
+
+#. module: requisition
+#: model:ir.model.fields,help:requisition.field_res_company__requisition_mail
+msgid "Correo electrónico para recibir las requisiciones de compra"
+msgstr "Correo electrónico para recibir las requisiciones de compra"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.view_requisition_budgeting_form
+msgid "Correos"
+msgstr "Correos"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__unit_cost
+msgid "Cost"
+msgstr "Costo"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.view_requisition_budgeting_form
+msgid "Coutas"
+msgstr "Cuotas"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__create_uid
+#: model:ir.model.fields,field_description:requisition.field_requisition__create_uid
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__create_uid
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting_line__create_uid
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__create_uid
+#: model:ir.model.fields,field_description:requisition.field_requisition_mail__create_uid
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__create_uid
+#: model:ir.model.fields,field_description:requisition.field_requisition_template_line__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__create_date
+#: model:ir.model.fields,field_description:requisition.field_requisition__create_date
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__create_date
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting_line__create_date
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__create_date
+#: model:ir.model.fields,field_description:requisition.field_requisition_mail__create_date
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__create_date
+#: model:ir.model.fields,field_description:requisition.field_requisition_template_line__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_form_view
+msgid "Creation Date"
+msgstr "Fecha de creación"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__currency_id
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__currency_id
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__currency_id
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "DEUDA PENDIENTE:"
+msgstr "DEUDA PENDIENTE:"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__name
+msgid "Description"
+msgstr "Descripción"
+
+#. module: requisition
+#: model:res.groups,name:requisition.group_requisition_data_entry
+msgid "Digitador"
+msgstr "Digitador"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__display_name
+#: model:ir.model.fields,field_description:requisition.field_requisition__display_name
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__display_name
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting_line__display_name
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__display_name
+#: model:ir.model.fields,field_description:requisition.field_requisition_mail__display_name
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: requisition
+#: model:ir.model.fields.selection,name:requisition.selection__requisition__state__draft
+#: model:ir.model.fields.selection,name:requisition.selection__requisition_mail__state__draft
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_res_company__requisition_mail
+msgid "Email Requisition"
+msgstr "Correo de requisición"
+
+#. module: requisition
+#: model:ir.model.fields,help:requisition.field_requisition_budgeting__number_quota
+msgid "Enter the number of quotas"
+msgstr "Ingrese el número de cuotas"
+
+#. module: requisition
+#: model:ir.model.fields,help:requisition.field_requisition_budgeting__amount_quota
+msgid "Enter the percentage value in decimals"
+msgstr "Ingrese el valor porcentual en decimales"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__message_follower_ids
+#: model:ir.model.fields,field_description:requisition.field_requisition__message_follower_ids
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__message_follower_ids
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__message_follower_ids
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__message_partner_ids
+#: model:ir.model.fields,field_description:requisition.field_requisition__message_partner_ids
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__message_partner_ids
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__message_partner_ids
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Socios)"
+
+#. module: requisition
+#: model:ir.model.fields.selection,name:requisition.selection__requisition__level__general
+#: model:ir.model.fields.selection,name:requisition.selection__requisition_budgeting__level__general
+msgid "General"
+msgstr "General"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_form_view
+msgid "Generate Budgets"
+msgstr "Generar presupuestos"
+
+#. module: requisition
+#: model:ir.ui.menu,name:requisition.settings_date_range_generator_requisition_menu
+msgid "Generate Date Range"
+msgstr "Generar rango de fechas"
+
+#. module: requisition
+#: model:ir.actions.act_window,name:requisition.action_requisition_all_view
+#: model:ir.ui.menu,name:requisition.menu_requisition_all
+msgid "Generated Requisitions"
+msgstr "Requisiciones generadas"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_form_view
+msgid "Give Back to Draft"
+msgstr "Devolver a borrador"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__has_message
+#: model:ir.model.fields,field_description:requisition.field_requisition__has_message
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__has_message
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__has_message
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__has_message
+msgid "Has Message"
+msgstr "Tiene mensaje"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__id
+#: model:ir.model.fields,field_description:requisition.field_requisition__id
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__id
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting_line__id
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__id
+#: model:ir.model.fields,field_description:requisition.field_requisition_mail__id
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__id
+#: model:ir.model.fields,field_description:requisition.field_requisition_template_line__id
+msgid "ID"
+msgstr "ID"
+
+#. module: requisition
+#: model:ir.model.fields,help:requisition.field_purchase_type__message_needaction
+#: model:ir.model.fields,help:requisition.field_requisition__message_needaction
+#: model:ir.model.fields,help:requisition.field_requisition_budgeting__message_needaction
+#: model:ir.model.fields,help:requisition.field_requisition_line__message_needaction
+#: model:ir.model.fields,help:requisition.field_requisition_template__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención."
+
+#. module: requisition
+#: model:ir.model.fields,help:requisition.field_purchase_type__message_has_error
+#: model:ir.model.fields,help:requisition.field_purchase_type__message_has_sms_error
+#: model:ir.model.fields,help:requisition.field_requisition__message_has_error
+#: model:ir.model.fields,help:requisition.field_requisition__message_has_sms_error
+#: model:ir.model.fields,help:requisition.field_requisition_budgeting__message_has_error
+#: model:ir.model.fields,help:requisition.field_requisition_budgeting__message_has_sms_error
+#: model:ir.model.fields,help:requisition.field_requisition_line__message_has_error
+#: model:ir.model.fields,help:requisition.field_requisition_line__message_has_sms_error
+#: model:ir.model.fields,help:requisition.field_requisition_template__message_has_error
+#: model:ir.model.fields,help:requisition.field_requisition_template__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si está marcado, algunos mensajes tienen error de entrega."
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__message_is_follower
+#: model:ir.model.fields,field_description:requisition.field_requisition__message_is_follower
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__message_is_follower
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__message_is_follower
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__message_is_follower
+msgid "Is Follower"
+msgstr "Es seguidor"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__is_quota
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__is_quota
+msgid "Is Quota"
+msgstr "Es cuota"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__write_uid
+#: model:ir.model.fields,field_description:requisition.field_requisition__write_uid
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__write_uid
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting_line__write_uid
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__write_uid
+#: model:ir.model.fields,field_description:requisition.field_requisition_mail__write_uid
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__write_uid
+#: model:ir.model.fields,field_description:requisition.field_requisition_template_line__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__write_date
+#: model:ir.model.fields,field_description:requisition.field_requisition__write_date
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__write_date
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting_line__write_date
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__write_date
+#: model:ir.model.fields,field_description:requisition.field_requisition_mail__write_date
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__write_date
+#: model:ir.model.fields,field_description:requisition.field_requisition_template_line__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: requisition
+#: model:ir.module.category,description:requisition.module_category_requisition
+msgid ""
+"Le ayuda a gestionar las requisiciones.            \n"
+"    Revisores: Permisos solo de lectura\n"
+"    Digitador: Permisos para lectura he ingresar información\n"
+"    Biologos: Permisos de aprobacion en finca\n"
+"    Aprobadores: Permisos de aprobacion en compras\n"
+"    Administrator: Todos los permisos\n"
+"            "
+msgstr ""
+"Le ayuda a gestionar las requisiciones.            \n"
+"    Revisores: Permisos solo de lectura\n"
+"    Digitador: Permisos para lectura e ingreso de información\n"
+"    Biólogos: Permisos de aprobación en finca\n"
+"    Aprobadores: Permisos de aprobación en compras\n"
+"    Administrador: Todos los permisos\n"
+"            "
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__level
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__level
+msgid "Level"
+msgstr "Nivel"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.view_requisition_budgeting_form
+msgid "Lineas"
+msgstr "Líneas"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.view_requisition_template_form
+msgid "Lineas de requisiciones"
+msgstr "Líneas de requisiciones"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_form_view
+msgid "Lines of Requisitions"
+msgstr "Líneas de requisiciones"
+
+#. module: requisition
+#: model:ir.model.fields.selection,name:requisition.selection__requisition__level__maintenance
+#: model:ir.model.fields.selection,name:requisition.selection__requisition_budgeting__level__maintenance
+msgid "Maintenance"
+msgstr "Mantenimiento"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__amount_quota
+msgid "Max Amount"
+msgstr "Monto máximo"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__message_has_error
+#: model:ir.model.fields,field_description:requisition.field_requisition__message_has_error
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__message_has_error
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__message_has_error
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de entrega de mensaje"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__message_ids
+#: model:ir.model.fields,field_description:requisition.field_requisition__message_ids
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__message_ids
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__message_ids
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__number_quota
+msgid "NNumber of Quotas"
+msgstr "Número de cuotas"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__name
+#: model:ir.model.fields,field_description:requisition.field_requisition__name
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__name
+#: model:ir.model.fields,field_description:requisition.field_requisition_mail__name
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__name
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_form_view
+msgid "Name"
+msgstr "Nombre"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.view_requisition_budgeting_form
+msgid "Nombre"
+msgstr "Nombre"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__notes
+msgid "Notes"
+msgstr "Notas"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__message_needaction_counter
+#: model:ir.model.fields,field_description:requisition.field_requisition__message_needaction_counter
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__message_needaction_counter
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__message_needaction_counter
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__message_has_error_counter
+#: model:ir.model.fields,field_description:requisition.field_requisition__message_has_error_counter
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__message_has_error_counter
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__message_has_error_counter
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__message_has_error_counter
+msgid "Number of errors"
+msgstr "Número de errores"
+
+#. module: requisition
+#: model:ir.model.fields,help:requisition.field_purchase_type__message_needaction_counter
+#: model:ir.model.fields,help:requisition.field_requisition__message_needaction_counter
+#: model:ir.model.fields,help:requisition.field_requisition_budgeting__message_needaction_counter
+#: model:ir.model.fields,help:requisition.field_requisition_line__message_needaction_counter
+#: model:ir.model.fields,help:requisition.field_requisition_template__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Número de mensajes que requieren acción"
+
+#. module: requisition
+#: model:ir.model.fields,help:requisition.field_purchase_type__message_has_error_counter
+#: model:ir.model.fields,help:requisition.field_requisition__message_has_error_counter
+#: model:ir.model.fields,help:requisition.field_requisition_budgeting__message_has_error_counter
+#: model:ir.model.fields,help:requisition.field_requisition_line__message_has_error_counter
+#: model:ir.model.fields,help:requisition.field_requisition_template__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de entrega"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "OBSER. COMPRAS"
+msgstr "OBSER. COMPRAS"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "OBSERVACIÓN"
+msgstr "OBSERVACIÓN"
+
+#. module: requisition
+#. odoo-python
+#: code:addons/requisition/models/requisition.py:0
+msgid "Ordenes de compra"
+msgstr "Órdenes de compra"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "PRECIO"
+msgstr "PRECIO"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "PRODUCTO/ITEM"
+msgstr "PRODUCTO/ITEM"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "PROFORMA"
+msgstr "PROFORMA"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__paid_quota
+msgid "Paid Quota"
+msgstr "Cuota pagada"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__string_quota
+msgid "Paid Quotas"
+msgstr "Cuotas pagadas"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__pending_quota
+msgid "Pending Quota"
+msgstr "Cuota pendiente"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_date_range__description
+#: model:ir.model.fields,field_description:requisition.field_requisition__period_id
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__range_type_id
+msgid "Period"
+msgstr "Período"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__range_type_id
+msgid "Period Type"
+msgstr "Tipo de período"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_form_view
+msgid "Print"
+msgstr "Imprimir"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting_line__product_id
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__product_id
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__product_ids
+#: model:ir.model.fields,field_description:requisition.field_requisition_template_line__product_ids
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_budgeting_line_list
+msgid "Product"
+msgstr "Producto"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting_line__category_id
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_budgeting_line_list
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__product_domain_ids
+#: model:ir.model.fields,field_description:requisition.field_requisition_template_line__product_domain_ids
+msgid "Product Domain"
+msgstr "Dominio de producto"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__product_quota
+msgid "Product Quota"
+msgstr "Cuota de producto"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_template_line__product_id
+msgid "Producto"
+msgstr "Producto"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.view_requisition_template_form
+msgid "Productos"
+msgstr "Productos"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_form_view
+msgid "Products"
+msgstr "Productos"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__observation_purchase
+msgid "Purchase Observation"
+msgstr "Observación de compra"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__purchase_order_ids
+msgid "Purchase Order"
+msgstr "Orden de compra"
+
+#. module: requisition
+#: model:ir.model,name:requisition.model_purchase_order
+msgid "Purchase Order Requisition"
+msgstr "Pedido de compra"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__purchase_order_count
+msgid "Purchase Orders"
+msgstr "Órdenes de compra"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_order__purchase_type_id
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__purchase_type_id
+msgid "Purchase Type"
+msgstr "Tipo de compra"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__purchased_product
+msgid "Purchased Product"
+msgstr "Producto adquirido"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__quantity
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__select_quota
+msgid "Quotas"
+msgstr "Cuotas"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "RECHAZADO"
+msgstr "RECHAZADO"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_form_view
+msgid "Reject"
+msgstr "Rechazar"
+
+#. module: requisition
+#: model:ir.model.fields.selection,name:requisition.selection__requisition__state__rejected
+#: model:ir.model.fields.selection,name:requisition.selection__requisition_mail__state__rejected
+msgid "Rejected"
+msgstr "Rechazado"
+
+#. module: requisition
+#: model:ir.actions.report,name:requisition.action_report_requisition
+msgid "Reporte de Requisiciones"
+msgstr "Reporte de requisiciones"
+
+#. module: requisition
+#: model:ir.module.category,name:requisition.module_category_requisition
+msgid "Requisiciones"
+msgstr "Requisiciones"
+
+#. module: requisition
+#: model:ir.model,name:requisition.model_requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_order__requisition_id
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__requisition_id
+#: model:ir.ui.menu,name:requisition.menu_requisition
+#: model:ir.ui.menu,name:requisition.menu_requisition_root
+msgid "Requisition"
+msgstr "Requisición"
+
+#. module: requisition
+#: model:ir.actions.act_window,name:requisition.action_requisition_budgeting_view
+#: model:ir.ui.menu,name:requisition.settings_requisition_budgeting_menu
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_search_view
+#: model_terms:ir.ui.view,arch_db:requisition.view_requisition_budgeting_form
+#: model_terms:ir.ui.view,arch_db:requisition.view_requisition_budgeting_search
+msgid "Requisition Budget"
+msgstr "Presupuesto de requisición"
+
+#. module: requisition
+#: model:ir.model,name:requisition.model_res_company
+msgid "Requisition Company"
+msgstr "Compañía de requisición"
+
+#. module: requisition
+#: model:ir.ui.menu,name:requisition.settings_requisition_menu
+msgid "Requisition Configuration"
+msgstr "Configuración de requisición"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__requisition_date
+msgid "Requisition Creation Date"
+msgstr "Fecha de creación de requisición"
+
+#. module: requisition
+#: model:ir.model,name:requisition.model_date_range
+msgid "Requisition Date Range"
+msgstr "Rango de fechas de requisición"
+
+#. module: requisition
+#: model:ir.ui.menu,name:requisition.settings_date_range_type_requisition_menu
+msgid "Requisition Date Range Types"
+msgstr "Tipos de rango de fechas de requisición"
+
+#. module: requisition
+#: model:ir.ui.menu,name:requisition.settings_date_range_requisition_menu
+msgid "Requisition Date Ranges"
+msgstr "Rangos de fechas de requisición"
+
+#. module: requisition
+#: model:ir.model,name:requisition.model_requisition_line
+#: model:ir.model.fields,field_description:requisition.field_requisition__requisition_line_ids
+msgid "Requisition Line"
+msgstr "Línea de requisición"
+
+#. module: requisition
+#: model:ir.actions.act_window,name:requisition.action_purchase_requisition_line_view
+#: model_terms:ir.ui.view,arch_db:requisition.purchase_requisition_line_form_view
+#: model_terms:ir.ui.view,arch_db:requisition.purchase_requisition_line_list_view
+#: model_terms:ir.ui.view,arch_db:requisition.purchase_requisition_line_search_view
+msgid "Requisition Lines"
+msgstr "Líneas de requisición"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__requisition_mail_ids
+msgid "Requisition Mail"
+msgstr "Correo de requisición"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__observation
+msgid "Requisition Observation"
+msgstr "Observación de requisición"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__requisition_status
+msgid "Requisition Status"
+msgstr "Estado de requisición"
+
+#. module: requisition
+#: model:ir.model,name:requisition.model_requisition_template
+msgid "Requisition Template"
+msgstr "Plantilla de requisición"
+
+#. module: requisition
+#: model:ir.model,name:requisition.model_requisition_template_line
+msgid "Requisition Template Lines"
+msgstr "Líneas de plantilla de requisición"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_template_line__requisition_tmpl_id
+msgid "Requisition Tmpl"
+msgstr "Plantilla de requisición"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__requisition_tmpl_line_id
+msgid "Requisition Tmpl Line"
+msgstr "Línea de plantilla"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__requisition_budgeting_id
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__requisition_budgeting_id
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__requisition_budgeting_id
+#: model:ir.model.fields,field_description:requisition.field_requisition_template_line__requisition_budgeting_id
+msgid "Requisition Type"
+msgstr "Tipo de requisición"
+
+#. module: requisition
+#: model:ir.ui.menu,name:requisition.menu_requisition_child
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_form_view
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_list_view
+msgid "Requisitions"
+msgstr "Requisiciones"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__partner_id
+msgid "Responsible"
+msgstr "Responsable"
+
+#. module: requisition
+#: model:res.groups,name:requisition.group_requisition_reviewers
+msgid "Revisores"
+msgstr "Revisores"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "SALDO:"
+msgstr "SALDO:"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__message_has_sms_error
+#: model:ir.model.fields,field_description:requisition.field_requisition__message_has_sms_error
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__message_has_sms_error
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__message_has_sms_error
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Error de entrega SMS"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_form_view
+msgid "Send Requisition"
+msgstr "Enviar requisición"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__sequence
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__sequence
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__sequence_id
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting_line__sequence
+#: model:ir.model.fields,field_description:requisition.field_requisition_mail__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__state
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__state
+#: model:ir.model.fields,field_description:requisition.field_requisition_mail__state
+msgid "State"
+msgstr "Estado"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__sub_total
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__sub_total_quotas
+msgid "Subtotal for Quotas"
+msgstr "Subtotal de cuotas"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__seller_id
+msgid "Supplier"
+msgstr "Proveedor"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "TOT. ITEM"
+msgstr "TOT. ÍTEM"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "TOTAL"
+msgstr "TOTAL"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "TOTAL APROBADO:"
+msgstr "TOTAL APROBADO:"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "TOTAL ITEMS:"
+msgstr "TOTAL ÍTEMS:"
+
+#. module: requisition
+#: model:ir.ui.menu,name:requisition.menu_requisition_tmpl
+msgid "Templates"
+msgstr "Plantillas"
+
+#. module: requisition
+#. odoo-python
+#: code:addons/requisition/models/requisition_budgeting.py:0
+msgid "The requisition name cannot be empty."
+msgstr "El nombre de la requisición no puede estar vacío."
+
+#. module: requisition
+#. odoo-python
+#: code:addons/requisition/models/requisition_line.py:0
+msgid ""
+"The selected product does not have a configured provider. For more "
+"information, contact your system administrator."
+msgstr ""
+"El producto seleccionado no tiene un proveedor configurado. Para más "
+"información, contacte a su administrador de sistema."
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition__total_requisition
+msgid "Total Requisition"
+msgstr "Total de requisición"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.view_purchase_type_list
+msgid "Type Requisition"
+msgstr "Tipo de requisición"
+
+#. module: requisition
+#: model:ir.actions.act_window,name:requisition.action_purchase_type_view
+#: model:ir.ui.menu,name:requisition.settings_purchase_type_menu
+#: model_terms:ir.ui.view,arch_db:requisition.view_purchase_type_search
+msgid "Type requisition"
+msgstr "Tipo de requisición"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.report_requisition
+msgid "UNID. COMPRA"
+msgstr "UNID. COMPRA"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__product_uom_id
+msgid "Unit of Measure"
+msgstr "Unidad de medida"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_requisition_mail__user_ids
+msgid "Users"
+msgstr "Usuarios"
+
+#. module: requisition
+#: model:ir.model.fields,field_description:requisition.field_purchase_type__website_message_ids
+#: model:ir.model.fields,field_description:requisition.field_requisition__website_message_ids
+#: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__website_message_ids
+#: model:ir.model.fields,field_description:requisition.field_requisition_line__website_message_ids
+#: model:ir.model.fields,field_description:requisition.field_requisition_template__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: requisition
+#: model:ir.model.fields,help:requisition.field_purchase_type__website_message_ids
+#: model:ir.model.fields,help:requisition.field_requisition__website_message_ids
+#: model:ir.model.fields,help:requisition.field_requisition_budgeting__website_message_ids
+#: model:ir.model.fields,help:requisition.field_requisition_line__website_message_ids
+#: model:ir.model.fields,help:requisition.field_requisition_template__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicación web"
+
+#. module: requisition
+#: model_terms:ir.ui.view,arch_db:requisition.requisition_form_view
+msgid "Write your general observations..."
+msgstr "Escriba sus observaciones generales..."
+
+#. module: requisition
+#: model:ir.model,name:requisition.model_purchase_type
+msgid "purchase type"
+msgstr "tipo de compra"
+
+#. module: requisition
+#: model:ir.actions.act_window,name:requisition.action_requisition_template_view
+#: model_terms:ir.ui.view,arch_db:requisition.view_requisition_template_form
+#: model_terms:ir.ui.view,arch_db:requisition.view_requisition_template_search
+msgid "requisition template"
+msgstr "plantilla de requisición"

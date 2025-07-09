@@ -4,7 +4,7 @@
         <field name="name">requisition.budgeting.line.list</field>
         <field name="model">requisition.budgeting.line</field>
         <field name="arch" type="xml">
-            <list string="Lineas de presupuesto" editable="bottom" sample='1'>
+            <list string="Budget Lines" editable="bottom" sample='1'>
                 <field name="company_id" column_invisible="True"/>
                 <field name="sequence" widget="handle"
                        column_invisible="context.get('invisible_handle', False)"/>
@@ -36,7 +36,7 @@
         <field name="name">requisition.budgeting.search</field>
         <field name="model">requisition.budgeting</field>
         <field name="arch" type="xml">
-            <search string="Presupuesto de Requisiciones">
+            <search string="Requisition Budget">
                 <field name="name"/>
                 <field name="company_id"/>
             </search>
@@ -46,7 +46,7 @@
         <field name="name">requisition.budgeting.form</field>
         <field name="model">requisition.budgeting</field>
         <field name="arch" type="xml">
-            <form string="Presupuesto de Requisiciones">
+            <form string="Requisition Budget">
             <header></header>
                 <sheet>
                     <field name="active" invisible="1"/>
@@ -55,7 +55,7 @@
                             invisible="active == True"/>
                     <div>
                         <h1>
-                            <field name="name" placeholder="Presupuesto de Requisiciones"
+                            <field name="name" placeholder="Requisition Budget"
                             required="1" style="width: 100%"/>
                         </h1>
                     </div>
@@ -108,7 +108,7 @@
         </field>
     </record>
     <record id="action_requisition_budgeting_view" model="ir.actions.act_window">
-        <field name="name">Presupuesto de Requisiciones</field>
+        <field name="name">Requisition Budget</field>
         <field name="path">requisition_budgeting</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">requisition.budgeting</field>
