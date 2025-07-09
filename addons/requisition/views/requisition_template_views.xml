@@ -15,7 +15,7 @@
         <field name="name">requisition.template.search</field>
         <field name="model">requisition.template</field>
         <field name="arch" type="xml">
-            <search string="Plantilla de requisiciones">
+            <search string="requisition template">
                 <field name="name"/>
                 <field name="requisition_budgeting_id"/>
                 <field name="company_id"/>
@@ -26,7 +26,7 @@
         <field name="name">requisition.template.form</field>
         <field name="model">requisition.template</field>
         <field name="arch" type="xml">
-            <form string="Plantilla de requisiciones">
+            <form string="requisition template">
             <header></header>
                 <sheet>
                     <field name="active" invisible="1"/>
@@ -35,7 +35,7 @@
                             invisible="active == True"/>
                     <div>
                         <h1>
-                            <field name="name" placeholder="Plantilla de requisiciones"
+                            <field name="name" placeholder="requisition template"
                             required="1" style="width: 100%"/>
                         </h1>
                     </div>
@@ -67,7 +67,7 @@
         </field>
     </record>
     <record id="action_requisition_template_view" model="ir.actions.act_window">
-        <field name="name">Plantilla de requisiciones</field>
+        <field name="name">requisition template</field>
         <field name="path">requisition_template</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">requisition.template</field>

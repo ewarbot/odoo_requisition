@@ -4,7 +4,7 @@
         <field name="name">requisition.line.list</field>
         <field name="model">requisition.line</field>
         <field name="arch" type="xml">
-            <list string="Lineas de requisiciones" editable="bottom">
+            <list string="Requisition Lines" editable="bottom">
                 <field name="state"
                 invisible="1"
                 force_save='1'/>
@@ -73,7 +73,7 @@
         <field name="name">requisition.line.form</field>
         <field name="model">requisition.line</field>
         <field name="arch" type="xml">
-            <form string="Lineas de requisiciones" editable="bottom">
+            <form string="Requisition Lines" editable="bottom">
                 <group>
                     <field name="product_id" force_save='1' options="{'no_create': True, 'no_open': True}" />
                     <field name="name" force_save='1'/>
@@ -101,14 +101,14 @@
         <field name="name">requisition.line.search</field>
         <field name="model">requisition.line</field>
         <field name="arch" type="xml">
-            <search string="Lineas de requisiciones">
+            <search string="Requisition Lines">
                 <field name="product_id" />
                 <field name="company_id" />
             </search>
         </field>
     </record>
     <record id="action_purchase_requisition_line_view" model="ir.actions.act_window">
-        <field name="name">Lineas de requisiciones</field>
+        <field name="name">Requisition Lines</field>
         <field name="path">purchase_requisition_line</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">requisition.line</field>

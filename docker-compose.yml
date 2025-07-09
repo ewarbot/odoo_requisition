@@ -1,10 +1,10 @@
 services:
   db:
-    container_name: odoo18_db
+    container_name: odoo_req_18_db
     image: postgres:17
     user: root
     ports:
-      - "5432:5432"
+      - "5490:5432"
     environment:
       - POSTGRES_USER=odoo
       - POSTGRES_PASSWORD=odoo@2025
@@ -20,7 +20,7 @@ services:
 
   web:
     init: true
-    container_name: odoo18_web
+    container_name: odoo_req_18_web
     build:
       context: .
       dockerfile: Dockerfile
@@ -28,8 +28,8 @@ services:
     depends_on:
       - db
     ports:
-      - "8069:8069"
-      - "5678:5678" 
+      - "8090:8069"
+      - "5690:5678" 
     command:
       - --dev=all
     environment:

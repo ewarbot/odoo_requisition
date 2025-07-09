@@ -6,12 +6,12 @@ from .data import STATE_LIST
 
 class RequisitionMail(models.Model):
     _name = 'requisition.mail'
-    _description = 'Configuración de correo requisiciones'
+    _description = 'Configuration of Requisition Emails'
     _order = "id,sequence"
 
     active = fields.Boolean(default=True)
     sequence = fields.Integer(default=1)
-    name = fields.Char(string='Nombre')
+    name = fields.Char(string='Name')
     budgeting_id = fields.Many2one('requisition.budgeting')
     state = fields.Selection(STATE_LIST)
-    user_ids = fields.Many2many('res.users', string='Usuarios')
+    user_ids = fields.Many2many('res.users', string='Users')
