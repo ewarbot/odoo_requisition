@@ -27,7 +27,7 @@
                     <button name="action_confirm" 
                         string="Confirm" 
                         invisible="state not in ('draft','rejected')" 
-                        groups="requisition.group_requisition_biologists,requisition.group_requisition_manager"
+                        groups="requisition.group_requisition_manager"
                         type="object" 
                         class="oe_highlight"/>
 

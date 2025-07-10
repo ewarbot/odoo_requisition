@@ -177,7 +177,7 @@ class RequisitionLine(models.Model):
 
     def unlink(self):
         for record in self:
-            if record.parent_id.state in ('approved', 'budgeted'):
+            if record.requisition_id.state in ('approved', 'budgeted'):
                 raise UserError(
                     _('Cannot delete lines when the requisition is approved.')
                 )

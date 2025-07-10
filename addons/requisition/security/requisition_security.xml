@@ -6,7 +6,6 @@
             <field name="description">Le ayuda a gestionar las requisiciones.            
     Revisores: Permisos solo de lectura
     Digitador: Permisos para lectura he ingresar información
-    Biologos: Permisos de aprobacion en finca
     Aprobadores: Permisos de aprobacion en compras
     Administrator: Todos los permisos
             </field>
@@ -24,15 +23,9 @@
             <field name="category_id" ref="requisition.module_category_requisition"/>
         </record>
 
-        <record id="group_requisition_biologists" model="res.groups">
-            <field name="name">Biologos</field>
-            <field name="implied_ids" eval="[(4, ref('group_requisition_data_entry'))]"/>
-            <field name="category_id" ref="requisition.module_category_requisition"/>
-        </record>
-
         <record id="group_requisition_Approver" model="res.groups">
             <field name="name">Aprobadores</field>
-            <field name="implied_ids" eval="[(4, ref('group_requisition_biologists'))]"/>
+            <field name="implied_ids" eval="[(4, ref('group_requisition_data_entry'))]"/>
             <field name="category_id" ref="requisition.module_category_requisition"/>
         </record>
 

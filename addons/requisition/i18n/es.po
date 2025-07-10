@@ -196,11 +196,6 @@ msgid "BORRADOR"
 msgstr "BORRADOR"
 
 #. module: requisition
-#: model:res.groups,name:requisition.group_requisition_biologists
-msgid "Biologos"
-msgstr "Biólogos"
-
-#. module: requisition
 #: model:ir.model.fields,field_description:requisition.field_requisition__budget
 #: model:ir.model.fields,field_description:requisition.field_requisition_budgeting__budget
 msgid "Budget"
